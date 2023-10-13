@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "github.com/steelWinds/go-grpc-service/internal/pokemon/proto";
+
+message Pokemon {
+    string id = 1;
+    string pid = 2;
+    string name = 3;
+    string power = 4;
+    string description = 5;
+}
+
+message CreatePokemonRequest {
+    Pokemon pokemon = 1;
+}
+
+message CreatePokemonResponse {
+    Pokemon pokemon = 1;
+}
+
+message ReadPokemonRequest {
+    string pid = 1;
+}
+
+message ReadPokemonResponse {
+    Pokemon pokemon = 1;
+}
+
+message UpdatePokemonRequest {
+    Pokemon pokemon = 1;
+}
+
+message UpdatePokemonResponse {
+    Pokemon pokemon = 1;
+}
+
+message DeletePokemonRequest {
+    string pid = 1;
+}
+
+message DeletePokemonResponse {
+    string pid = 1;
+}
+
+message ListPokemonRequest {}
+
+message ListPokemonResponse {
+    Pokemon pokemon = 1;
+}
+
+service PokemonService {
+    rpc CreatePokemon (CreatePokemonRequest) returns (CreatePokemonResponse);
+    rpc ReadPokemon (ReadPokemonRequest) returns (ReadPokemonResponse);
+    rpc UpdatePokemon (UpdatePokemonRequest) returns (UpdatePokemonResponse);
+    rpc DeletePokemon (DeletePokemonRequest) returns (DeletePokemonResponse);
+    rpc LiistPokemon (ListPokemonRequest) returns (ListPokemonResponse);
+}
